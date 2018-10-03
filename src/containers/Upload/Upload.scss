@@ -1,0 +1,71 @@
+@import '../../shared/variables.scss';
+
+.PlaylistsContainer {
+  display: grid;
+  grid-template-columns: 50% 50%;
+
+  .FormInput {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    margin-top: 1rem;
+    border-radius: $border-radius;
+    padding: .5rem 1rem;
+    background: $bg-grey-medium;
+    &:after {
+      content: "";
+      position: absolute;
+      left: 0px;
+      right: 0px;
+      bottom: 0px;
+      z-index: 2;
+      height: 2px;
+      border-bottom-left-radius: $border-radius;
+      border-bottom-right-radius: $border-radius;
+      background-position: 0% 0%;
+      background: linear-gradient(to right, #B294FF, #57E6E6, #FEFFB8, #57E6E6, #B294FF, #57E6E6);
+      background-size: 500% auto;
+      animation: gradient 3s linear infinite;
+    }
+
+    input {
+      border-style: none;
+      background: transparent;
+      outline: none;
+      flex-grow: 1;
+      color: $input-text-active;
+      font-size: 1.25rem;
+      line-height: $line-height;
+      vertical-align: middle;
+      &::-webkit-input-placeholder {
+        color: $input-text-disabled;
+      }
+    }
+
+    button {
+      padding: 0;
+      background: none;
+      border: none;
+      outline: none;
+      color: $input-text-disabled;
+      font-size: 1.5rem;
+      line-height: $line-height;
+      vertical-align: middle;
+      transition: color .25s;
+      &:hover {
+        color: $input-text-active;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.PlaylistItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: $bg-blue;
+  border-radius: $border-radius;
+  border: 3px solid $border-color;
+}

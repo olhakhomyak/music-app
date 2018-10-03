@@ -1,0 +1,21 @@
+.songUrl {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-align: left;
+  margin-left: .5rem;
+  display: flex;
+  align-items: center;
+}
+
+.Button {
+  background: none;
+  border: none;
+  outline: none;
+  font-size: 1.25rem;
+  margin-right: .5rem;
+
+  &:hover {
+    cursor: pointer;
+  }
+}

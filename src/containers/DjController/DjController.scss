@@ -1,0 +1,23 @@
+@import '../../shared/variables.scss';
+
+.DjControllerContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 50px;
+  overflow: hidden;
+}
+
+.PlaylistItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: $bg-blue;
+  border-radius: $border-radius;
+  border: 3px solid $border-color;
+
+  .PlayerWrapper {
+    max-width: 100%;
+    width: 300px;
+  }
+}

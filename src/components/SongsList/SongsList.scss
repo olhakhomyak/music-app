@@ -1,0 +1,12 @@
+@import '../../shared/variables.scss';
+
+.SongRow {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  margin-bottom: .5rem;
+
+  .SongNr {
+    display: flex;
+    align-items: center;
+  }
+}
