@@ -13,7 +13,7 @@ const addSong = ( state, action ) => {
     lists: {
       ...state.lists,
       [action.side]: [...state.lists[action.side], action.songUrl],
-      }
+    }
   }
 };
 

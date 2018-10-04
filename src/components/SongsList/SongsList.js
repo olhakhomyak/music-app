@@ -3,15 +3,16 @@ import SongItem from './SongItem/SongItem';
 import './SongsList.scss';
 
 const SongsList = ( props ) => {
-  const { songs, side, displayControl } = props
+  const { songs, side, displayControl, activeSong = null } = props
   const playlist = songs.map((song, index) => (
     <div key={ song } className="SongRow">
       <span className="SongNr">{ index + 1 }.</span>
       <SongItem
           song={ song }
+          active= { song === activeSong }
           displayControl={ displayControl }
           onRemove={() => props.onRemoveHandler(song, side)}
-          onPlay={() => props.onPlayHandler(song)}
+          onReady={() => props.onPlayHandler(song, side)}
          />
     </div>))
 

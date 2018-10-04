@@ -2,19 +2,22 @@ import React, { Component, Fragment } from 'react';
 import ReactPlayer from 'react-player';
 import * as actions from '../../store/actions/index';
 import { connect } from 'react-redux';
+import './Player.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Player = ( props ) => {
-    const { url, playing, volume, side } = props.config
+    const { url, playing, volume } = props.config
     const songUrl = url || props.list[0]
     const playPauseBtn = playing ?
-      (<button onClick={ () => props.playPause(songUrl, side) }>
-          <span>Pause</span>
-          <FontAwesomeIcon icon="pause-circle"/>
+      (<button
+        onClick={ () => props.playPause(playing, props.side) }
+        className="btnPlayerControl">
+          <FontAwesomeIcon icon="pause"/>
       </button>) :
-      (<button onClick={ () => props.playPause(songUrl, side) }>
-          <span>Play</span>
-          <FontAwesomeIcon icon="play-circle"/>
+      (<button
+        onClick={ () => props.playPause(playing, props.side) }
+        className="btnPlayerControl">
+          <FontAwesomeIcon icon="play"/>
       </button>)
 
     return (
@@ -24,11 +27,13 @@ const Player = ( props ) => {
           playing={ playing }
           volume={ volume }
           controls={ false }
+          width='100%'
          />
        <div className="PlayerControls">
-         <button onClick={ props.stop }>
-           <span>Stop </span>
-           <FontAwesomeIcon icon="stop-circle"/>
+         <button
+           onClick={ () => props.stopSong(props.side) }
+           className="btnPlayerControl">
+           <FontAwesomeIcon icon="stop"/>
          </button>
          { playPauseBtn }
          <input
@@ -37,7 +42,7 @@ const Player = ( props ) => {
            max={ 1 }
            step='any'
            value={ props.volume }
-           onChange={ (e) => props.setVolume(e.target.value, side) } />
+           onChange={ (e) => props.setVolume(e.target.value, props.side) } />
        </div>
     </Fragment>
   )

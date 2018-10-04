@@ -7,4 +7,5 @@ export {
     onSongPlayed,
     onPlayPause,
     onSetVolume,
+    onStop,
 } from './player';

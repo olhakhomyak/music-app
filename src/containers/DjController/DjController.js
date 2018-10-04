@@ -16,11 +16,13 @@ class DjController extends Component {
             height='100%'
             side='left'
             list={ this.props.lists.left }
-            config={ this.props.playerConfig }
+            config={ this.props.playerConfig.left }
             playPause= { this.props.onPlayPause }
-            setVolume= { this.props.onSetVolume } />
+            setVolume= { this.props.onSetVolume }
+            stopSong= { this.props.onStop } />
           <SongsList
             songs={ this.props.lists.left }
+            activeSong= { this.props.playerConfig.left.url }
             side="left"
             displayControl={ false }
             onPlayHandler= { this.props.onSongPlayed }
@@ -33,11 +35,13 @@ class DjController extends Component {
             height='100%'
             side='right'
             list={ this.props.lists.right }
-            config={ this.props.playerConfig }
+            config={ this.props.playerConfig.right }
             playPause= { this.props.onPlayPause }
-            setVolume= { this.props.onSetVolume } />
+            setVolume= { this.props.onSetVolume }
+            stopSong= { this.props.onStop } />
           <SongsList
             songs={ this.props.lists.right }
+            activeSong= { this.props.playerConfig.right.url }
             side="right"
             displayControl={ false }
             onPlayHandler= { this.props.onSongPlayed }
@@ -57,9 +61,10 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onPlayPause: () => dispatch(actions.onPlayPause()),
+    onPlayPause: (playing, side) => dispatch(actions.onPlayPause(playing, side)),
     onSongPlayed: (songUrl, side) => dispatch(actions.onSongPlayed(songUrl, side)),
-    onSetVolume: (val, side) => dispatch(actions.onSetVolume(val, side))
+    onSetVolume: (val, side) => dispatch(actions.onSetVolume(val, side)),
+    onStop: (side) => dispatch(actions.onStop(side)),
   }
 }
 

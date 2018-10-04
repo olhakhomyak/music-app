@@ -1,3 +1,5 @@
+@import '../../../shared/variables.scss';
+
 .songUrl {
   overflow: hidden;
   white-space: nowrap;
@@ -6,6 +8,10 @@
   margin-left: .5rem;
   display: flex;
   align-items: center;
+
+  &.active {
+    color: rgb(41, 41, 131);
+  }
 }
 
 .Button {

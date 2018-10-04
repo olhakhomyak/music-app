@@ -11,14 +11,16 @@ const SongItem = ( props ) => {
       </button>
     : <div>
         <button
-          onClick={ props.onPlay }
+          onClick={ props.onReady }
           className="Button">
-          <FontAwesomeIcon icon="play-circle" />
+          <FontAwesomeIcon icon="play" />
         </button>
      </div>
+  const songClasses = props.active ? 'songUrl active' : 'songUrl'
+
   return(
     <Fragment>
-      <span className="songUrl">
+      <span className={ songClasses }>
         { props.song }
       </span>
       { controlBtn }

@@ -20,7 +20,7 @@ handleSubmit(event, side) {
     return (
       <Fragment>
         <h1>TRACKS <FontAwesomeIcon icon="music" /> </h1>
-        <h3>Add some songs from <a href="https://soundcloud.com/" target="_blank">SoundCloud</a></h3>
+      <h3>Add some songs from <a href="https://www.youtube.com/" target="_blank">Youtube</a> or <a href="https://soundcloud.com/" target="_blank">SoundCloud</a></h3>
           <div className="PlaylistsContainer">
             <div className="PlaylistItem">
               <SongsList

@@ -8,10 +8,10 @@ export const onSongPlayed = ( selectedSong, side ) => {
     };
 };
 
-export const onPlayPause = ( songUrl, side ) => {
+export const onPlayPause = ( playing, side ) => {
     return {
         type: actionTypes.ON_PLAY_PAUSE,
-        songUrl,
+        playing,
         side,
     };
 };
@@ -20,6 +20,13 @@ export const onSetVolume = ( value, side ) => {
     return {
         type: actionTypes.ON_SET_VOLUME,
         value,
+        side,
+    };
+};
+
+export const onStop = ( side ) => {
+    return {
+        type: actionTypes.ON_STOP,
         side,
     };
 };
