@@ -1,25 +1,20 @@
-import React, { Component, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import ReactPlayer from 'react-player';
-import * as actions from '../../store/actions/index';
-import { connect } from 'react-redux';
+import Button from '../Button/Button';
 import './Player.scss';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Player = ( props ) => {
-    const { url, playing, volume } = props.config
-    const songUrl = url || props.list[0]
+    const { config: { url, playing, volume }, side, list } = props
+    const songUrl = url || list[0]
     const playPauseBtn = playing ?
-      (<button
-        onClick={ () => props.playPause(playing, props.side) }
-        className="btnPlayerControl">
-          <FontAwesomeIcon icon="pause"/>
-      </button>) :
-      (<button
-        onClick={ () => props.playPause(playing, props.side) }
-        className="btnPlayerControl">
-          <FontAwesomeIcon icon="play"/>
-      </button>)
-
+      (<Button
+        clicked={() => props.playPause(playing, side)}
+        icon="pause"
+       />) :
+      (<Button
+        clicked={() => props.playPause(playing, side)}
+        icon="play"
+       />)
     return (
       <Fragment>
         <ReactPlayer
@@ -30,19 +25,26 @@ const Player = ( props ) => {
           width='100%'
          />
        <div className="PlayerControls">
-         <button
-           onClick={ () => props.stopSong(props.side) }
-           className="btnPlayerControl">
-           <FontAwesomeIcon icon="stop"/>
-         </button>
+         <Button
+           clicked={() => props.playPause(playing, side)}
+           icon="stop"
+          />
+        <Button
+          clicked={() => props.playPrev(side)}
+          icon="backward"
+         />
          { playPauseBtn }
+         <Button
+           clicked={() => props.playNext(side)}
+           icon="forward"
+          />
          <input
            type='range'
            min={ 0 }
            max={ 1 }
            step='any'
-           value={ props.volume }
-           onChange={ (e) => props.setVolume(e.target.value, props.side) } />
+           value={ volume }
+           onChange={(e) => props.setVolume(e.target.value, side)} />
        </div>
     </Fragment>
   )

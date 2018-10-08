@@ -4,6 +4,18 @@ import { faMusic,
           faTrashAlt,
           faPlay,
           faPause,
-          faStop, } from '@fortawesome/free-solid-svg-icons';
+          faStop,
+          faForward,
+          faBackward,
+        } from '@fortawesome/free-solid-svg-icons';
 
-library.add(faMusic, faPlus, faTrashAlt, faPlay, faPause, faStop);
+library.add(
+  faMusic,
+  faPlus,
+  faTrashAlt,
+  faPlay,
+  faPause,
+  faStop,
+  faForward,
+  faBackward,
+);

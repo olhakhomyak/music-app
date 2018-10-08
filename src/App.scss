@@ -1,7 +1,9 @@
+@import './shared/variables.scss';
+
 .App {
   text-align: center;
-  background: rgb(238,185,174);
-  background: radial-gradient(circle, rgba(238,185,174,1) 0%, rgba(148,191,233,1) 100%);
+  background: $bg-salmon;
+  background: radial-gradient(circle, $bg-salmon 0%, $bg-accent-blue 100%);
   height: 100%;
 }
 

@@ -9,14 +9,12 @@ const SongItem = ( props ) => {
         className="Button">
         <FontAwesomeIcon icon="trash-alt" />
       </button>
-    : <div>
-        <button
-          onClick={ props.onReady }
-          className="Button">
-          <FontAwesomeIcon icon="play" />
-        </button>
-     </div>
-  const songClasses = props.active ? 'songUrl active' : 'songUrl'
+    : <button
+        onClick={ props.onReady }
+        className="Button">
+        <FontAwesomeIcon icon="play" />
+      </button>
+  const songClasses = props.active ? 'songUrl active' : 'songUrl';
 
   return(
     <Fragment>

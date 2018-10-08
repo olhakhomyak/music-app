@@ -10,51 +10,57 @@ class Upload extends Component {
 handleSubmit(event, side) {
    const input = this.refs;
    event.preventDefault();
-   if (!input[side].value.trim()) return
+   if (!input[side].value.trim()) return;
    this.props.onSongAdded(input[side].value, side);
    input[side].value = '';
  }
 
   render () {
-    const lists = this.props.lists
+    const lists = this.props.lists;
+    const sides = Object.keys(this.props.lists);
+    const forms = sides.map((side, i) => {
+      return(
+        <div key={i} className="PlaylistItem">
+          <SongsList
+            songs={ lists[side] }
+            side={ side }
+            displayControl={ true }
+            onRemoveHandler={ this.props.onSongRemoved }
+          />
+          <form onSubmit={(e) => this.handleSubmit(e, side)}>
+            <div className="FormInput">
+                <input
+                  ref={ side }
+                  type="text"
+                  placeholder="Add link here" />
+                <button
+                  className="FormButton"
+                  type="submit">
+                  <FontAwesomeIcon icon="plus" />
+                </button>
+            </div>
+          </form>
+        </div>
+      )
+    })
     return (
       <Fragment>
         <h1>TRACKS <FontAwesomeIcon icon="music" /> </h1>
-      <h3>Add some songs from <a href="https://www.youtube.com/" target="_blank">Youtube</a> or <a href="https://soundcloud.com/" target="_blank">SoundCloud</a></h3>
+        <h3>Add some songs from <a
+            href="https://www.youtube.com/"
+            target="_blank"
+            rel="noopener noreferrer">
+            Youtube
+          </a> or <a
+            href="https://soundcloud.com/"
+            target="_blank"
+            rel="noopener noreferrer">
+            SoundCloud
+          </a>
+        </h3>
           <div className="PlaylistsContainer">
-            <div className="PlaylistItem">
-              <SongsList
-                songs={ lists.left }
-                side={ 'left' }
-                displayControl={ true }
-                onRemoveHandler={ this.props.onSongRemoved }
-              />
-              <form onSubmit={(e) => this.handleSubmit(e, "left")}>
-                <div className="FormInput">
-                    <input ref="left" type="text" placeholder="Add link here" />
-                    <button className="FormButton" type="submit">
-                      <FontAwesomeIcon icon="plus" />
-                    </button>
-                </div>
-              </form>
-            </div>
-            <div className="PlaylistItem">
-              <SongsList
-                songs={ lists.right }
-                side={ 'right' }
-                displayControl={ true }
-                onRemoveHandler={ this.props.onSongRemoved }
-              />
-              <form onSubmit={ (e) => this.handleSubmit(e, "right") }>
-                <div className="FormInput">
-                  <input ref="right" type="text" placeholder="Add link here" />
-                  <button className="FormButton" type="submit">
-                    <FontAwesomeIcon icon="plus" />
-                  </button>
-                </div>
-              </form>
-            </div>
-        </div>
+            { forms }
+          </div>
       </Fragment>
     );
   }
@@ -62,7 +68,7 @@ handleSubmit(event, side) {
 
 const mapStateToProps = state => {
   return {
-    lists: state.playlist.lists,
+    lists: state.playlist,
   }
 };
 
@@ -71,6 +77,6 @@ const mapDispatchToProps = dispatch => {
     onSongAdded: (songUrl, side) => dispatch(actions.addSong(songUrl, side)),
     onSongRemoved: (songUrl, side) => dispatch(actions.removeSong(songUrl, side)),
   }
-}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)( Upload );

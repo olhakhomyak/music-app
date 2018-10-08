@@ -18,6 +18,6 @@ export const removeSong = ( songUrl, side ) => {
 
 export const clearPlaylist = () => {
     return {
-        type: actionTypes.CLEAR_PLAYLIST,
+      type: actionTypes.CLEAR_PLAYLIST,
     };
 };

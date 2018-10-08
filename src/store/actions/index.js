@@ -5,6 +5,8 @@ export {
 } from './playlist';
 export {
     onSongPlayed,
+    onPlayNext,
+    onPlayPrev,
     onPlayPause,
     onSetVolume,
     onStop,

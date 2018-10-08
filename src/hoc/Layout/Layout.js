@@ -29,7 +29,7 @@ class Layout extends Component {
 
 const mapStateToProps = state => {
   return {
-    lists: state.playlist.lists
+    lists: state.playlist
   };
 };
 

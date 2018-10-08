@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import './assets/icons/icons';
-
 import Layout from './hoc/Layout/Layout'
 import Upload from './containers/Upload/Upload';
 import DjController from './containers/DjController/DjController';
+import './assets/icons/icons';
 import './App.scss';
 
 class App extends Component {
@@ -40,7 +39,7 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    lists: state.playlist.lists,
+    lists: state.playlist,
   };
 };
 
